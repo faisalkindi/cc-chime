@@ -2,12 +2,17 @@
 # chime.sh - Play a notification chime when Claude Code finishes
 # Cross-platform support: Windows (via Git Bash), macOS, Linux
 
+# Get the plugin root directory (parent of hooks/)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PLUGIN_ROOT="$(dirname "$SCRIPT_DIR")"
+
 play_chime() {
     case "$(uname -s)" in
         MINGW*|MSYS*|CYGWIN*)
             # Windows (Git Bash/MSYS2/Cygwin)
-            # Play custom notification sound
-            powershell.exe -NoProfile -Command "(New-Object System.Media.SoundPlayer 'C:\Users\faisa\Downloads\Music\mixkit-gaming-lock-2848.wav').PlaySync()" 2>/dev/null
+            # Convert to Windows path and play custom notification sound
+            SOUND_FILE=$(cygpath -w "$PLUGIN_ROOT/sounds/lock.wav")
+            powershell.exe -NoProfile -Command "(New-Object System.Media.SoundPlayer '$SOUND_FILE').PlaySync()" 2>/dev/null
             ;;
         Darwin)
             # macOS
