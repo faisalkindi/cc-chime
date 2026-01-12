@@ -36,12 +36,12 @@ The plugin uses the `Stop` hook event which fires whenever Claude Code finishes 
 
 1. Add the marketplace:
    ```
-   /plugin marketplace add your-username/cc-chime
+   /plugin marketplace add faisalkindi/cc-chime
    ```
 
 2. Install:
    ```
-   /plugin install cc-chime@your-marketplace
+   /plugin install cc-chime@cc-chime
    ```
 
 ## Requirements
