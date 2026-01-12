@@ -6,8 +6,8 @@ play_chime() {
     case "$(uname -s)" in
         MINGW*|MSYS*|CYGWIN*)
             # Windows (Git Bash/MSYS2/Cygwin)
-            # Use PowerShell to play Windows system sound
-            powershell.exe -NoProfile -Command "[System.Media.SystemSounds]::Asterisk.Play()" 2>/dev/null
+            # Play custom notification sound
+            powershell.exe -NoProfile -Command "(New-Object System.Media.SoundPlayer 'C:\Users\faisa\Downloads\Music\mixkit-gaming-lock-2848.wav').PlaySync()" 2>/dev/null
             ;;
         Darwin)
             # macOS
