@@ -1,0 +1,11 @@
+{
+  "name": "cc-chime",
+  "version": "1.0.0",
+  "description": "Plays a chime sound when Claude Code finishes responding",
+  "author": {
+    "name": "Faisa"
+  },
+  "repository": "https://github.com/faisa/cc-chime",
+  "license": "MIT",
+  "keywords": ["notification", "audio", "chime", "sound"]
+}
