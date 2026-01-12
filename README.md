@@ -10,9 +10,9 @@ A Claude Code plugin that plays a notification chime when Claude finishes respon
 
 ## How It Works
 
-The plugin uses the `Stop` hook event which fires whenever Claude Code finishes generating a response. When triggered, it plays a system sound appropriate for your platform:
+The plugin uses the `Stop` hook event which fires whenever Claude Code finishes generating a response. When triggered, it plays an audio notification:
 
-- **Windows**: Uses PowerShell to play the Windows "Asterisk" system sound
+- **Windows**: Plays a custom sound (`sounds/lock.wav`) via PowerShell
 - **macOS**: Plays the "Glass" system sound using `afplay`
 - **Linux**: Tries PulseAudio (`paplay`), ALSA, or canberra-gtk-play
 
@@ -42,23 +42,27 @@ The plugin uses the `Stop` hook event which fires whenever Claude Code finishes 
 
 ## Customization
 
-To change the sound, edit `hooks/chime.sh`:
+### Replacing the Sound File
 
-### Windows Custom Sound
-Replace the PowerShell command with:
+The easiest way to customize is to replace `sounds/lock.wav` with your own `.wav` file (keep the same filename).
+
+### Using a Different Path
+
+Edit `hooks/chime.sh` to point to a different sound file or use system sounds:
+
+**Windows - Custom path:**
 ```powershell
 powershell.exe -NoProfile -Command "(New-Object Media.SoundPlayer 'C:\path\to\sound.wav').PlaySync()"
 ```
 
-Available system sounds:
+**Windows - System sounds:**
 - `[System.Media.SystemSounds]::Asterisk.Play()`
 - `[System.Media.SystemSounds]::Beep.Play()`
 - `[System.Media.SystemSounds]::Exclamation.Play()`
 - `[System.Media.SystemSounds]::Hand.Play()`
 - `[System.Media.SystemSounds]::Question.Play()`
 
-### macOS Custom Sound
-Replace `Glass.aiff` with any sound file:
+**macOS - Custom sound:**
 ```bash
 afplay "/path/to/your/sound.aiff"
 ```
