@@ -18,22 +18,6 @@ The plugin uses the `Stop` hook event which fires whenever Claude Code finishes 
 
 ## Installation
 
-### From Local Development
-
-1. Add the plugin as a local marketplace:
-   ```
-   /plugin marketplace add C:\Users\faisa\Ai\CCChime
-   ```
-
-2. Install the plugin:
-   ```
-   /plugin install cc-chime@cc-chime-dev
-   ```
-
-3. Restart Claude Code to activate the hooks.
-
-### From GitHub (after publishing)
-
 1. Add the marketplace:
    ```
    /plugin marketplace add faisalkindi/cc-chime
